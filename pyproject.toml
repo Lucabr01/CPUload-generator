@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cpu-generator"
+version = "0.1.0"
+description = "Synthetic CPU-load generator for data-center simulations."
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.24",
+]
+
+[project.optional-dependencies]
+examples = [
+    "sinergym",
+    "gymnasium",
+]
+
+[tool.setuptools]
+packages = ["cpu_generator"]
+
+# Include all dataset CSVs (including large third-party ones like the
+# Google cluster trace) inside the built wheel/sdist.
+[tool.setuptools.package-data]
+cpu_generator = ["dataset/*.csv"]
